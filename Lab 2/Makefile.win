@@ -1,0 +1,33 @@
+# Project: Search/Sort
+# Makefile created by Dev-C++ 4.9.9.2
+
+CPP  = g++.exe
+CC   = gcc.exe
+WINDRES = windres.exe
+RES  = 
+OBJ  = srchsort.o array.o $(RES)
+LINKOBJ  = srchsort.o array.o $(RES)
+LIBS =  -L"F:/Dev-Cpp/lib"  
+INCS =  -I"F:/Dev-Cpp/include" 
+CXXINCS =  -I"F:/Dev-Cpp/include" 
+BIN  = srchsort.exe
+CXXFLAGS = $(CXXINCS)  
+CFLAGS = $(INCS)  
+RM = rm -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before srchsort.exe all-after
+
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o "srchsort.exe" $(LIBS)
+
+srchsort.o: srchsort.cpp
+	$(CPP) -c srchsort.cpp -o srchsort.o $(CXXFLAGS)
+
+array.o: array.cpp
+	$(CPP) -c array.cpp -o array.o $(CXXFLAGS)

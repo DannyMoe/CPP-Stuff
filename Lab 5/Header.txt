@@ -1,0 +1,83 @@
+/************************************************
+* FILE(S):          #############
+* PROGRAMMER:    Daniel Moe
+* DATE:          #############
+* LAB:           Lab ##
+* 
+* PURPOSE: ##############
+************************************************/
+
+/**************************
+*Includes
+**************************/
+#ifndef CARLIST_H
+#define CARLIST_H
+#include <cstdlib>
+#include <iostream>
+
+using namespace std;
+
+class CArList
+{
+public:
+        CArList();
+        CArList(int);
+        ~CArList();
+        void makeEmpty();
+        void add(int);
+        void del(int);
+        void print();
+private:
+        int *list;
+        int size;
+        int li;
+};
+
+
+inline CArList::CArList()
+{ list = new int[10];}
+inline CArList::CArList(int n)
+{ list = new int[10];}
+inline CArList::~CArList()
+{ delete list;}
+inline int CArList::makeEmpty()
+{ li = 0;}
+inline int CArList::add(int value)
+{
+    int choice;
+       if(li == size)
+       {
+             cout << "The list is already full! Please delete a position before adding a value." << endl;
+       }
+       else
+       {
+           list[size] = value;
+       }
+}
+
+inline int CArList::del(int position)
+{
+       if(position >= li || position < 0)
+       {
+           cout << "That position doesn't exist within the list! Choose again." << endl;
+           cout << endl << "DELETE FROM LIST" << endl << "Enter a position: ";
+           cin >> position;      
+       }
+       else
+       {
+           for(li = 0; li < size - 1; li++)
+           {
+               list[li] = list[li + 1];
+           }
+       }
+}
+
+inline int CArList::print()
+{
+    int i;
+       for(i = 0; i <= li; i++)
+       {
+            cout << li << ". " << list[li] << endl;
+       }
+}
+#endif
